@@ -8,14 +8,39 @@
 
 import UIKit
 
-class NewNoteViewController: UIViewController {
+class NewNoteViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UICollectionViewDelegate, UICollectionViewDataSource {
 
+    
+    var selectedImages = [UIImage]()
+    var imagePicker = UIImagePickerController()
+    
+    var editedNote: Int?
+    
+    @IBOutlet weak var titleOfView: UINavigationItem!
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var descriptionTextField: UITextView!
+    @IBOutlet weak var attachedImagesCollectionView: UICollectionView!
+    
+    @IBAction func chooseImage(sender: AnyObject) {
+        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.SavedPhotosAlbum){
+            imagePicker.delegate = self
+            imagePicker.sourceType = UIImagePickerControllerSourceType.SavedPhotosAlbum;
+            imagePicker.allowsEditing = false
+            
+            self.presentViewController(imagePicker, animated: true, completion: nil)
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        if editedNote != nil {
+            titleOfView.title = "Edit note"
+            let note = Notes.sharedInstance.getNote(editedNote!)
+            titleTextField.text = note.title
+            descriptionTextField.text = note.text
+            selectedImages = note.images
+        }
         // Do any additional setup after loading the view.
     }
 
@@ -27,19 +52,40 @@ class NewNoteViewController: UIViewController {
     @IBAction func saveNewNote(sender: AnyObject) {
         let title = titleTextField.text!
         let description = descriptionTextField.text!
-        Notes.sharedInstance.addNote(title, description: description)
+        
+        let note = Note(title: title, description: description, images: selectedImages)
+        if editedNote == nil {
+            Notes.sharedInstance.addNote(note)
+        } else {
+            Notes.sharedInstance.replaceNote(note, inPosition: editedNote!)
+        }
         
         self.navigationController?.popToRootViewControllerAnimated(true)
     }
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
+        self.dismissViewControllerAnimated(true, completion: { () -> Void in
+            self.attachedImagesCollectionView.reloadData()
+        })
+        selectedImages.append(image)
+        print(selectedImages)
+    }
 
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return selectedImages.count
+    }
+    
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("cellImage", forIndexPath: indexPath) as! ImageCollectionCell
+        cell.preview?.image = selectedImages[indexPath.item]
+        return cell
+    }
+    
     /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
+    
     */
 
 }

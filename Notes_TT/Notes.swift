@@ -7,51 +7,66 @@
 //
 
 import Foundation
+import UIKit
 
-class Note : NSObject{
-    var title = ""
-    var text = ""
-    
-    init(title : String, description : String){
-        self.title = title
-        self.text = description
-    }
-    
-    required init(coder aDecoder : NSCoder){
-        self.title = aDecoder.decodeObjectForKey("title") as! String
-        self.text = aDecoder.decodeObjectForKey("text") as! String
-    }
-
-    func encodeWithCoder(aCoder: NSCoder!) {
-        aCoder.encodeObject(title, forKey: "title")
-        aCoder.encodeObject(text, forKey: "text")
-    }
+enum NotesError : ErrorType{
+    case OutOfRange
 }
 
 class Notes {
     
-    var notes : [Note]?
+    private var notes : [Note]
+    
+    var count: Int {
+        return notes.count
+    }
     
     static let sharedInstance = Notes()
     
     private init(){
-        NSUserDefaults.standardUserDefaults().setObject(nil, forKey: "Notes") // for test like a first run
+//        NSUserDefaults.standardUserDefaults().setObject(nil, forKey: "Notes") // for test like a first run
         
         let notesData = NSUserDefaults.standardUserDefaults().objectForKey("Notes") as? NSData
         if notesData != nil {
-            notes = NSKeyedUnarchiver.unarchiveObjectWithData(notesData!) as? [Note]
+            notes = NSKeyedUnarchiver.unarchiveObjectWithData(notesData!) as! [Note]
+        } else {
+            notes = []
         }
     }
     
-    func addNote(title : String, description : String){
-        
-        if notes != nil {
-            notes!.append(Note(title: title, description: description))
-        } else {
-            notes = [Note(title: title, description: description)]
+    func addNote(note: Note){
+        notes.append(note)
+        saveChanges()
+    }
+    
+    func replaceNote(note: Note, inPosition number: Int) {
+        notes[number] = note
+        saveChanges()
+    }
+    
+    func getNote(number: Int) -> Note {
+        return self.notes[number]
+    }
+    
+    func deleteNote(number: Int) throws {
+        guard number >= 0 && number < notes.count else {
+            throw NotesError.OutOfRange
         }
-        let notesData = NSKeyedArchiver.archivedDataWithRootObject(notes!)
-        NSUserDefaults.standardUserDefaults().setObject(notesData, forKey: "Notes")
+        
+        notes.removeAtIndex(number)
+        saveChanges()
+    }
+    
+    func deleteAll(){
+        notes = []
+        saveChanges()
+    }
+    
+    func saveChanges(){
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
+            let notesData = NSKeyedArchiver.archivedDataWithRootObject(self.notes)
+            NSUserDefaults.standardUserDefaults().setObject(notesData, forKey: "Notes")
+        }
     }
     
 }
