@@ -8,8 +8,9 @@
 
 import UIKit
 
-class NewNoteViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UICollectionViewDelegate, UICollectionViewDataSource {
+class NewNoteViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
+    @IBOutlet weak var viewer: Viewer!
     
     var selectedImages = [UIImage]()
     var imagePicker = UIImagePickerController()
@@ -40,6 +41,13 @@ class NewNoteViewController: UIViewController, UINavigationControllerDelegate, U
             titleTextField.text = note.title
             descriptionTextField.text = note.text
             selectedImages = note.images
+        }
+        
+        view.backgroundColor = UIColor.pastelRainbowColor(withNumber: 9)
+        viewer.setDelAction { 
+            self.selectedImages.removeAtIndex(self.viewer.currentImageNumber)
+            self.attachedImagesCollectionView.reloadData()
+            self.viewer.close()
         }
         // Do any additional setup after loading the view.
     }
@@ -81,11 +89,16 @@ class NewNoteViewController: UIViewController, UINavigationControllerDelegate, U
         return cell
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        if UIDevice.currentDevice().userInterfaceIdiom == .Pad {
+            return CGSize(width: 196, height: 196)
+        } else {
+            return CGSize(width: 96, height: 96)
+        }
+    }
     
-    */
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        viewer.showImages(selectedImages, startForNumber: indexPath.row)
+    }
 
 }

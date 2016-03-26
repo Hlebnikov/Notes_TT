@@ -8,11 +8,12 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, NoteCellDelegate {
 
     @IBOutlet weak var tableNotes: UITableView!
     
     var openedNote: Int?
+    @IBOutlet weak var viewer: Viewer!
     
     @IBAction func deleteNote(sender: AnyObject) {
         let alert = UIAlertController(title: "Delete note", message: "Do you really want delete this note?", preferredStyle: .Alert)
@@ -43,17 +44,22 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        openedNote = nil
+        viewer.close()
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         tableNotes.reloadData()
+        if openedNote != nil {
+            let openedCell = tableNotes.cellForRowAtIndexPath(NSIndexPath(forItem: openedNote!, inSection: 0)) as! NoteCell
+            openedCell.showButtons()
+        }
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("noteCell", forIndexPath: indexPath) as! NoteCell
         cell.config(numberOfRow: indexPath.row)
+        cell.delegate = self
         return cell
     }
 
@@ -75,8 +81,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if openedNote != nil {
-            let prevCell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: openedNote!, inSection: 0)) as! NoteCell
-            prevCell.hideButtons()
+            if let prevCell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: openedNote!, inSection: 0)) as? NoteCell {
+                prevCell.hideButtons()
+            }
         }
         let cell = tableView.cellForRowAtIndexPath(indexPath) as! NoteCell
         cell.showButtons()
@@ -85,12 +92,22 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         tableView.endUpdates()
     }
     
+    func showImages(images: [UIImage], startByNumber number: Int) {
+        viewer.showImages(images, startForNumber: number)
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-        if segue.identifier == "edit" {
-            let vc = segue.destinationViewController as! NewNoteViewController
-            vc.editedNote = self.openedNote
+        
+        if segue.identifier != nil {
+            switch segue.identifier! {
+            case "edit":
+                let vc = segue.destinationViewController as! NewNoteViewController
+                vc.editedNote = self.openedNote
+                vc.view.backgroundColor = UIColor.pastelRainbowColor(withNumber: self.openedNote!)
+            default:
+                let vc = segue.destinationViewController as! NewNoteViewController
+                vc.view.backgroundColor = UIColor.pastelRainbowColor(withNumber: Notes.sharedInstance.count)
+            }
         }
     }
 

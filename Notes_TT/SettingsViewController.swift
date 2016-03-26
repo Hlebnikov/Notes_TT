@@ -11,7 +11,7 @@ import UIKit
 class SettingsViewController: UITableViewController {
 
     @IBAction func deleteAll(sender: AnyObject) {
-        let alert = UIAlertController(title: "Delete all notes?", message: "This action is uncancelable", preferredStyle: .Alert)
+        let alert = UIAlertController(title: "Delete all notes?", message: "This action can't be canceled", preferredStyle: .Alert)
         alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
         alert.addAction(UIAlertAction(title: "Delete", style: .Destructive, handler: { (alertAction) in
             Notes.sharedInstance.deleteAll()

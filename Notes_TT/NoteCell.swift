@@ -8,7 +8,11 @@
 
 import UIKit
 
-class NoteCell: UITableViewCell, UICollectionViewDataSource, UICollectionViewDelegate {
+protocol NoteCellDelegate {
+    func showImages(images: [UIImage], startByNumber number: Int)
+}
+
+class NoteCell: UITableViewCell, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
 
     @IBOutlet weak var titleOfNote: UILabel!
     @IBOutlet weak var descriptionArea: UITextView!
@@ -18,6 +22,8 @@ class NoteCell: UITableViewCell, UICollectionViewDataSource, UICollectionViewDel
 
     private var images = [UIImage]()
     
+    var delegate : NoteCellDelegate?
+    
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("imageCell", forIndexPath: indexPath) as! ImageCollectionCell
         cell.preview?.image = images[indexPath.item]
@@ -26,6 +32,19 @@ class NoteCell: UITableViewCell, UICollectionViewDataSource, UICollectionViewDel
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return images.count ?? 0
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        if UIDevice.currentDevice().userInterfaceIdiom == .Pad {
+            return CGSize(width: 223, height: 223)
+        } else {
+            return CGSize(width: 93, height: 93)
+        }
+    }
+    
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        print("click")
+        delegate?.showImages(images, startByNumber: indexPath.item)
     }
     
     func setImages(images: [UIImage]){
