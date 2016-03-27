@@ -19,10 +19,16 @@ class NoteCell: UITableViewCell, UICollectionViewDataSource, UICollectionViewDel
     @IBOutlet weak var imagesCollectionView: UICollectionView!
     @IBOutlet weak var editButton: UIButton!
     @IBOutlet weak var delButton: UIButton!
+    @IBOutlet weak var editedLabel: UILabel!
+    @IBOutlet weak var createdLabel: UILabel!
+    @IBOutlet weak var editDateLabel: UILabel!
+    @IBOutlet weak var createDateLabel: UILabel!
 
     private var images = [UIImage]()
     
     var delegate : NoteCellDelegate?
+    
+    let dateFormatter = NSDateFormatter()
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("imageCell", forIndexPath: indexPath) as! ImageCollectionCell
@@ -43,7 +49,6 @@ class NoteCell: UITableViewCell, UICollectionViewDataSource, UICollectionViewDel
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        print("click")
         delegate?.showImages(images, startByNumber: indexPath.item)
     }
     
@@ -59,15 +64,26 @@ class NoteCell: UITableViewCell, UICollectionViewDataSource, UICollectionViewDel
         titleOfNote.text = note.title
         descriptionArea.text = note.text
         descriptionArea.contentOffset = CGPoint.zero
+        dateFormatter.dateStyle = .ShortStyle
+        createDateLabel.text = dateFormatter.stringFromDate(note.createDate)
+        editDateLabel.text = dateFormatter.stringFromDate(note.editDate)
         hideButtons()
     }
     
     func showButtons(){
+        editedLabel.alpha = 0
+        createdLabel.alpha = 0
+        editDateLabel.alpha = 0
+        createDateLabel.alpha = 0
         editButton.alpha = 1
         delButton.alpha = 1
     }
     
     func hideButtons(){
+        editedLabel.alpha = 1
+        createdLabel.alpha = 1
+        editDateLabel.alpha = 1
+        createDateLabel.alpha = 1
         editButton.alpha = 0
         delButton.alpha = 0
     }

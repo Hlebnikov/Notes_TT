@@ -61,10 +61,15 @@ class NewNoteViewController: UIViewController, UINavigationControllerDelegate, U
         let title = titleTextField.text!
         let description = descriptionTextField.text!
         
-        let note = Note(title: title, description: description, images: selectedImages)
         if editedNote == nil {
+            let note = Note(title: title, description: description, images: selectedImages)
             Notes.sharedInstance.addNote(note)
         } else {
+            let note = Notes.sharedInstance.getNote(editedNote!)
+            note.title = title
+            note.text = description
+            note.editDate = NSDate()
+            note.images = selectedImages
             Notes.sharedInstance.replaceNote(note, inPosition: editedNote!)
         }
         
@@ -76,7 +81,6 @@ class NewNoteViewController: UIViewController, UINavigationControllerDelegate, U
             self.attachedImagesCollectionView.reloadData()
         })
         selectedImages.append(image)
-        print(selectedImages)
     }
 
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

@@ -51,7 +51,7 @@
                                 </constraints>
                                 <state key="normal" title="Close"/>
                                 <connections>
-                                    <action selector="close:" destination="-1" eventType="touchUpInside" id="K1x-bZ-87j"/>
+                                    <action selector="closeButtonClick:" destination="-1" eventType="touchUpInside" id="e00-Fg-kdo"/>
                                 </connections>
                             </button>
                         </subviews>

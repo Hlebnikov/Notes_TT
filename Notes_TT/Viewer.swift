@@ -16,10 +16,8 @@ class Viewer: UIView {
     var currentImageNumber = 0
     
     @IBOutlet weak var deleteButton: UIButton!
-    @IBAction func close(sender: AnyObject) {
-        UIView.animateWithDuration(0.4) { 
-            self.alpha = 0
-        }
+    @IBAction func closeButtonClick(sender: AnyObject) {
+        close()
     }
     
     var view: UIView!
@@ -42,7 +40,7 @@ class Viewer: UIView {
         swipeRight.direction = .Right
         self.addGestureRecognizer(swipeRight)
         
-        let swipeUp = UISwipeGestureRecognizer(target: self, action: "close")
+        let swipeUp = UISwipeGestureRecognizer(target: self, action: #selector(Viewer.close))
         swipeUp.direction = .Up
         self.addGestureRecognizer(swipeUp)
     }

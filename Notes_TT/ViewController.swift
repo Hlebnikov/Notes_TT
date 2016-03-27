@@ -16,7 +16,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     @IBOutlet weak var viewer: Viewer!
     
     @IBAction func deleteNote(sender: AnyObject) {
-        let alert = UIAlertController(title: "Delete note", message: "Do you really want delete this note?", preferredStyle: .Alert)
+        let alert = UIAlertController(title: "Delete note?", message: nil, preferredStyle: .Alert)
         alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
         alert.addAction(UIAlertAction(title: "Delete", style: .Destructive, handler: { (alertAction) in
             
@@ -94,6 +94,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func showImages(images: [UIImage], startByNumber number: Int) {
         viewer.showImages(images, startForNumber: number)
+        navigationController?.setToolbarHidden(true, animated: true)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
