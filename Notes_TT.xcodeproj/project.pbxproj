@@ -10,6 +10,7 @@
 		1F0C486F1CA7FB6400C553BA /* CloudManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0C486E1CA7FB6400C553BA /* CloudManager.swift */; };
 		1F90E7FA1CA3D0DD004AF2CA /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F90E7F91CA3D0DD004AF2CA /* Note.swift */; };
 		1F90E7FC1CA3F41B004AF2CA /* ImageCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F90E7FB1CA3F41B004AF2CA /* ImageCollectionCell.swift */; };
+		1FA7A79C1CB156E7003344DD /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA7A79B1CB156E7003344DD /* Constants.swift */; };
 		1FD2C25B1CA4608E0062A4E1 /* ExtensionUIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD2C25A1CA4608E0062A4E1 /* ExtensionUIColor.swift */; };
 		1FD2C25D1CA5084F0062A4E1 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD2C25C1CA5084F0062A4E1 /* SettingsViewController.swift */; };
 		1FD2C25F1CA561250062A4E1 /* Viewer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FD2C25E1CA561250062A4E1 /* Viewer.xib */; };
@@ -47,6 +48,7 @@
 		1F0C486E1CA7FB6400C553BA /* CloudManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudManager.swift; sourceTree = "<group>"; };
 		1F90E7F91CA3D0DD004AF2CA /* Note.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		1F90E7FB1CA3F41B004AF2CA /* ImageCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCollectionCell.swift; sourceTree = "<group>"; };
+		1FA7A79B1CB156E7003344DD /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		1FD2C25A1CA4608E0062A4E1 /* ExtensionUIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionUIColor.swift; sourceTree = "<group>"; };
 		1FD2C25C1CA5084F0062A4E1 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		1FD2C25E1CA561250062A4E1 /* Viewer.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Viewer.xib; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 			children = (
 				840A02911CA0504D00FC2306 /* AppDelegate.swift */,
 				1F0C486E1CA7FB6400C553BA /* CloudManager.swift */,
+				1FA7A79B1CB156E7003344DD /* Constants.swift */,
 				840F136C1CA179000066CBE1 /* Notes.swift */,
 				840A02931CA0504D00FC2306 /* ViewController.swift */,
 				1FD2C25C1CA5084F0062A4E1 /* SettingsViewController.swift */,
@@ -298,6 +301,7 @@
 				1FD2C2611CA5614F0062A4E1 /* Viewer.swift in Sources */,
 				1F90E7FA1CA3D0DD004AF2CA /* Note.swift in Sources */,
 				1FD2C25D1CA5084F0062A4E1 /* SettingsViewController.swift in Sources */,
+				1FA7A79C1CB156E7003344DD /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

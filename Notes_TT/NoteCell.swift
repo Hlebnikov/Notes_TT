@@ -42,9 +42,9 @@ class NoteCell: UITableViewCell, UICollectionViewDataSource, UICollectionViewDel
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         if UIDevice.currentDevice().userInterfaceIdiom == .Pad {
-            return CGSize(width: 223, height: 223)
+            return IPAD_CELL_SIZE
         } else {
-            return CGSize(width: 93, height: 93)
+            return IPHONE_CELL_SIZE
         }
     }
     
@@ -71,21 +71,21 @@ class NoteCell: UITableViewCell, UICollectionViewDataSource, UICollectionViewDel
     }
     
     func showButtons(){
-        editedLabel.alpha = 0
-        createdLabel.alpha = 0
-        editDateLabel.alpha = 0
-        createDateLabel.alpha = 0
-        editButton.alpha = 1
-        delButton.alpha = 1
+        editedLabel.hidden = true
+        createdLabel.hidden = true
+        editDateLabel.hidden = true
+        createDateLabel.hidden = true
+        editButton.hidden = false
+        delButton.hidden = false
     }
     
     func hideButtons(){
-        editedLabel.alpha = 1
-        createdLabel.alpha = 1
-        editDateLabel.alpha = 1
-        createDateLabel.alpha = 1
-        editButton.alpha = 0
-        delButton.alpha = 0
+        editedLabel.hidden = false
+        createdLabel.hidden = false
+        editDateLabel.hidden = false
+        createDateLabel.hidden = false
+        editButton.hidden = true
+        delButton.hidden = true
     }
     
 }

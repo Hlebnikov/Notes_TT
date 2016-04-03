@@ -133,12 +133,12 @@
                                                     </variation>
                                                 </textView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PcA-ob-as8">
-                                                    <rect key="frame" x="541" y="7" width="45" height="34"/>
+                                                    <rect key="frame" x="547" y="7" width="45" height="34"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="45" id="AXp-NY-JJ8"/>
                                                         <constraint firstAttribute="height" constant="34" id="Cz1-Bp-3Ns"/>
                                                     </constraints>
-                                                    <state key="normal" image="Entypo_e729(1)_32"/>
+                                                    <state key="normal" image="bin-7"/>
                                                     <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
                                                         <rect key="frame" x="741" y="6" width="45" height="34"/>
                                                     </variation>
@@ -147,12 +147,12 @@
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wNC-9d-VyN">
-                                                    <rect key="frame" x="489" y="6.5" width="44" height="35"/>
+                                                    <rect key="frame" x="499" y="6.5" width="44" height="35"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="44" id="FBz-ZU-kdV"/>
                                                         <constraint firstAttribute="height" constant="35" id="SRF-gs-jQz"/>
                                                     </constraints>
-                                                    <state key="normal" image="Entypo_270e(0)_32"/>
+                                                    <state key="normal" image="pencil-7"/>
                                                     <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
                                                         <rect key="frame" x="689" y="5" width="44" height="35"/>
                                                     </variation>
@@ -271,11 +271,11 @@
                                                 <constraint firstAttribute="bottomMargin" secondItem="ecr-1y-Vc6" secondAttribute="bottom" constant="4.5" id="OaF-ej-mBM"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="0eJ-bQ-fPt" secondAttribute="trailing" constant="8" id="TAj-du-3RL"/>
                                                 <constraint firstItem="wNC-9d-VyN" firstAttribute="centerY" secondItem="qkp-Fv-onR" secondAttribute="centerY" id="UCP-b9-1B4"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="PcA-ob-as8" secondAttribute="trailing" constant="6" id="UjF-F5-YVO"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="PcA-ob-as8" secondAttribute="trailing" id="UjF-F5-YVO"/>
                                                 <constraint firstItem="OlM-Mv-Gps" firstAttribute="width" secondItem="0eJ-bQ-fPt" secondAttribute="width" id="Zxa-u7-Edr"/>
                                                 <constraint firstItem="d12-1C-1P4" firstAttribute="trailing" secondItem="pvo-6t-gfc" secondAttribute="trailing" id="byX-L1-Tqx"/>
                                                 <constraint firstItem="f4s-vD-ZKY" firstAttribute="leading" secondItem="ecr-1y-Vc6" secondAttribute="trailing" constant="8" id="fst-7a-lMU"/>
-                                                <constraint firstItem="PcA-ob-as8" firstAttribute="leading" secondItem="wNC-9d-VyN" secondAttribute="trailing" constant="8" id="gO8-pD-YhK"/>
+                                                <constraint firstItem="PcA-ob-as8" firstAttribute="leading" secondItem="wNC-9d-VyN" secondAttribute="trailing" constant="4" id="gO8-pD-YhK"/>
                                                 <constraint firstItem="pvo-6t-gfc" firstAttribute="top" secondItem="LIy-5f-Z3f" secondAttribute="topMargin" constant="-3" id="jwB-Rd-PzL"/>
                                                 <constraint firstItem="ecr-1y-Vc6" firstAttribute="top" secondItem="qkp-Fv-onR" secondAttribute="bottom" constant="8" id="kKt-XG-bAw"/>
                                                 <constraint firstItem="f4s-vD-ZKY" firstAttribute="trailing" secondItem="LIy-5f-Z3f" secondAttribute="trailingMargin" id="kMv-cV-0D6"/>
@@ -349,7 +349,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Notes" id="CKY-An-aAL">
-                        <barButtonItem key="leftBarButtonItem" image="themify_f00e(0)_256" id="anO-ek-6cK">
+                        <barButtonItem key="leftBarButtonItem" image="gear-7" id="anO-ek-6cK">
                             <connections>
                                 <segue destination="brQ-OT-X30" kind="show" id="Pao-6A-TN9"/>
                             </connections>
@@ -449,7 +449,7 @@
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="35" id="u66-Kl-uY2"/>
                                     <constraint firstAttribute="height" constant="34" id="vfF-UN-5SU"/>
                                 </constraints>
-                                <state key="normal" image="Iconic_e08a(0)_48"/>
+                                <state key="normal" image="paper-clip-7"/>
                                 <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
                                     <rect key="frame" x="745" y="153" width="35" height="34"/>
                                 </variation>
@@ -586,10 +586,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Entypo_270e(0)_32" width="24" height="24"/>
-        <image name="Entypo_e729(1)_32" width="23" height="27"/>
-        <image name="Iconic_e08a(0)_48" width="30" height="34"/>
-        <image name="themify_f00e(0)_256" width="29" height="29"/>
+        <image name="bin-7" width="22" height="22"/>
+        <image name="gear-7" width="30" height="30"/>
+        <image name="paper-clip-7" width="30" height="30"/>
+        <image name="pencil-7" width="22" height="22"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="o3H-1r-QeQ"/>

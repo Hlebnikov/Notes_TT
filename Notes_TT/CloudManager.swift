@@ -39,6 +39,7 @@ class CloudManager
         noteRecord.setValue(note.editDate, forKey: "editDate")
         noteRecord.setValue(note.title, forKey: "title")
         noteRecord.setValue(note.text, forKey: "text")
+        noteRecord.setValue(note.id, forKey: "id")
         
         publicDB?.saveRecord(noteRecord, completionHandler: { (record, error) in
             
@@ -74,6 +75,7 @@ class CloudManager
                     let editDate = result.valueForKey("editDate") as! NSDate
                     
                     let note = Note(title: title, description: text, images: [])
+                    note.id = result.valueForKey("id") as! Int
                     note.createDate = createDate
                     note.editDate = editDate
                     notes.append(note)
@@ -86,13 +88,13 @@ class CloudManager
         return notes
     }
     
-    func deleteNoteWithTitle(title: NSString, reloadDataMethod: () -> ())
+    func deleteNoteWithId(id: Int, reloadDataMethod: () -> ())
     {
         if !networkIsConnected() {
             return
         }
         
-        let predicate = NSPredicate(format: "title = %@", title)
+        let predicate = NSPredicate(format: "id = %@", id)
         let query = CKQuery(recordType: "Note", predicate: predicate)
         
         publicDB?.performQuery(query, inZoneWithID: nil,

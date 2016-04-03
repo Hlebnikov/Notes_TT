@@ -8,12 +8,18 @@
 
 import UIKit
 
+protocol ViewerDelegate {
+    func clickedDeleteButton()
+}
+
 class Viewer: UIView {
 
     @IBOutlet weak var imageView: UIImageView!
     
     var images = [UIImage]()
     var currentImageNumber = 0
+    
+    var delegate : ViewerDelegate?
     
     @IBOutlet weak var deleteButton: UIButton!
     @IBAction func closeButtonClick(sender: AnyObject) {
@@ -23,7 +29,7 @@ class Viewer: UIView {
     var view: UIView!
     
     @IBAction func deleteButtonClick(sender: AnyObject) {
-        deleteAction()
+        delegate?.clickedDeleteButton()
     }
     
     func xibSetup() {
@@ -89,12 +95,6 @@ class Viewer: UIView {
         currentImageNumber = number
         imageView.image = images[currentImageNumber]
         show()
-    }
-    
-    var deleteAction: ()->() = {}
-    func setDelAction(method: ()->()){
-        deleteAction = method
-        deleteButton.hidden = false
     }
 
 }

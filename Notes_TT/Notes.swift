@@ -35,6 +35,7 @@ class Notes {
     }
     
     func addNote(note: Note){
+        note.id = notes.last!.id + 1
         notes.append(note)
         saveChanges()
     }

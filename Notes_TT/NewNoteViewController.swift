@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NewNoteViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class NewNoteViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, ViewerDelegate {
 
     @IBOutlet weak var viewer: Viewer!
     
@@ -44,12 +44,7 @@ class NewNoteViewController: UIViewController, UINavigationControllerDelegate, U
         }
         
         view.backgroundColor = UIColor.pastelRainbowColor(withNumber: 9)
-        viewer.setDelAction { 
-            self.selectedImages.removeAtIndex(self.viewer.currentImageNumber)
-            self.attachedImagesCollectionView.reloadData()
-            self.viewer.close()
-        }
-        // Do any additional setup after loading the view.
+        viewer.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -95,14 +90,20 @@ class NewNoteViewController: UIViewController, UINavigationControllerDelegate, U
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         if UIDevice.currentDevice().userInterfaceIdiom == .Pad {
-            return CGSize(width: 196, height: 196)
+            return IPAD_CELL_SIZE
         } else {
-            return CGSize(width: 96, height: 96)
+            return IPHONE_CELL_SIZE
         }
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         viewer.showImages(selectedImages, startForNumber: indexPath.row)
+    }
+    
+    func clickedDeleteButton() {
+        self.selectedImages.removeAtIndex(self.viewer.currentImageNumber)
+        self.attachedImagesCollectionView.reloadData()
+        self.viewer.close()
     }
 
 }

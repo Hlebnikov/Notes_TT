@@ -34,14 +34,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        viewer.deleteButton.hidden = true
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         viewer.close()
@@ -69,18 +64,19 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if openedNote == nil {
-            return 45
+            return CLOSED_CELL_HEIGHT
         }
         
         if openedNote! == indexPath.row{
-            return 284
+            return OPENED_CELL_HEIGHT
         } else {
-            return 45
+            return CLOSED_CELL_HEIGHT
         }
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if openedNote != nil {
+            if openedNote == indexPath.row {return} // open only when cell not open
             if let prevCell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: openedNote!, inSection: 0)) as? NoteCell {
                 prevCell.hideButtons()
             }
@@ -89,7 +85,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         cell.showButtons()
         openedNote = indexPath.row
         tableView.beginUpdates()
+        // calling heightForRowAtIndexPath жуковского 115-54
         tableView.endUpdates()
+        print(Notes.sharedInstance.getNote(indexPath.row).id)
     }
     
     func showImages(images: [UIImage], startByNumber number: Int) {
@@ -98,7 +96,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
         if segue.identifier != nil {
             switch segue.identifier! {
             case "edit":
@@ -111,6 +108,5 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             }
         }
     }
-
 }
 

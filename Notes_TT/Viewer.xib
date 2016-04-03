@@ -16,67 +16,43 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PJb-Bi-hMg">
-                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="NbH-9N-pI3">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Iconic_e08a(0)_48" translatesAutoresizingMaskIntoConstraints="NO" id="ej1-2c-KT5">
-                                <rect key="frame" x="0.0" y="8" width="600" height="584"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            </imageView>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EoK-a0-Lrh">
-                                <rect key="frame" x="8" y="8" width="61" height="58"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="61" id="8ic-Yh-70S"/>
-                                    <constraint firstAttribute="height" constant="58" id="GZ5-1n-bve"/>
-                                    <constraint firstAttribute="width" constant="61" id="Lp0-B2-LuN"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="58" id="oyE-ta-DZ6"/>
-                                </constraints>
-                                <state key="normal" title="Delete"/>
-                                <connections>
-                                    <action selector="deleteButtonClick:" destination="-1" eventType="touchUpInside" id="L2c-3M-6D7"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kY7-xI-TB4">
-                                <rect key="frame" x="539" y="8" width="53" height="58"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="53" id="XkJ-WB-6QK"/>
-                                    <constraint firstAttribute="height" constant="58" id="kzU-Zt-b48"/>
-                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="58" id="m20-yK-IxS"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="58" id="x47-Ye-CXF"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="53" id="xcl-C2-Xeb"/>
-                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="53" id="zK3-Wn-e5T"/>
-                                </constraints>
-                                <state key="normal" title="Close"/>
-                                <connections>
-                                    <action selector="closeButtonClick:" destination="-1" eventType="touchUpInside" id="e00-Fg-kdo"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="ej1-2c-KT5" firstAttribute="top" secondItem="NbH-9N-pI3" secondAttribute="top" constant="8" id="4Ej-qt-dIl"/>
-                            <constraint firstAttribute="trailing" secondItem="kY7-xI-TB4" secondAttribute="trailing" constant="8" id="CuC-J6-p9N"/>
-                            <constraint firstItem="EoK-a0-Lrh" firstAttribute="leading" secondItem="NbH-9N-pI3" secondAttribute="leading" constant="8" id="MqM-Mm-O0W"/>
-                            <constraint firstItem="EoK-a0-Lrh" firstAttribute="top" secondItem="NbH-9N-pI3" secondAttribute="top" constant="8" id="S85-fu-WJa"/>
-                            <constraint firstAttribute="bottom" secondItem="ej1-2c-KT5" secondAttribute="bottom" constant="8" id="TcW-Uf-tEZ"/>
-                            <constraint firstItem="ej1-2c-KT5" firstAttribute="leading" secondItem="NbH-9N-pI3" secondAttribute="leading" id="Us1-BK-20d"/>
-                            <constraint firstItem="kY7-xI-TB4" firstAttribute="top" secondItem="NbH-9N-pI3" secondAttribute="top" constant="8" id="kR3-pa-DIj"/>
-                            <constraint firstAttribute="trailing" secondItem="ej1-2c-KT5" secondAttribute="trailing" id="nd3-Sk-yTZ"/>
-                        </constraints>
-                    </view>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Iconic_e08a(0)_48" translatesAutoresizingMaskIntoConstraints="NO" id="ej1-2c-KT5">
+                    <rect key="frame" x="8" y="8" width="584" height="536.5"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    <blurEffect style="dark"/>
-                </visualEffectView>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kY7-xI-TB4">
+                    <rect key="frame" x="297" y="552.5" width="303" height="47.5"/>
+                    <state key="normal" title="Close"/>
+                    <connections>
+                        <action selector="closeButtonClick:" destination="-1" eventType="touchUpInside" id="e00-Fg-kdo"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EoK-a0-Lrh">
+                    <rect key="frame" x="0.0" y="552" width="289" height="47.5"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="47.5" id="3SJ-4O-6SG"/>
+                    </constraints>
+                    <state key="normal" title="Delete"/>
+                    <connections>
+                        <action selector="deleteButtonClick:" destination="-1" eventType="touchUpInside" id="L2c-3M-6D7"/>
+                    </connections>
+                </button>
             </subviews>
-            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="PJb-Bi-hMg" secondAttribute="trailing" id="3d2-1u-bnT"/>
-                <constraint firstAttribute="bottom" secondItem="PJb-Bi-hMg" secondAttribute="bottom" id="Nhe-Kb-hCf"/>
-                <constraint firstItem="PJb-Bi-hMg" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="eNR-jB-2EE"/>
-                <constraint firstItem="PJb-Bi-hMg" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="hWv-Sa-fbj"/>
+                <constraint firstAttribute="bottom" secondItem="EoK-a0-Lrh" secondAttribute="bottom" id="5xc-to-AI9"/>
+                <constraint firstItem="ej1-2c-KT5" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="7sF-OJ-6xz"/>
+                <constraint firstItem="EoK-a0-Lrh" firstAttribute="top" secondItem="ej1-2c-KT5" secondAttribute="bottom" constant="7.5" id="MzR-Lc-27q"/>
+                <constraint firstItem="kY7-xI-TB4" firstAttribute="leading" secondItem="EoK-a0-Lrh" secondAttribute="trailing" constant="8" id="PbB-wW-zZ1"/>
+                <constraint firstAttribute="bottom" secondItem="kY7-xI-TB4" secondAttribute="bottom" id="bQz-Gl-cmV"/>
+                <constraint firstItem="kY7-xI-TB4" firstAttribute="height" secondItem="EoK-a0-Lrh" secondAttribute="height" id="d8h-PD-rog"/>
+                <constraint firstAttribute="bottom" secondItem="kY7-xI-TB4" secondAttribute="bottom" id="diY-C6-r5Z"/>
+                <constraint firstItem="EoK-a0-Lrh" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="kho-rO-BEg"/>
+                <constraint firstItem="kY7-xI-TB4" firstAttribute="width" secondItem="EoK-a0-Lrh" secondAttribute="width" id="ol8-z7-ArT"/>
+                <constraint firstAttribute="trailing" secondItem="ej1-2c-KT5" secondAttribute="trailing" constant="8" id="wPJ-Sk-3cF"/>
+                <constraint firstAttribute="trailing" secondItem="kY7-xI-TB4" secondAttribute="trailing" id="xav-e4-bzK"/>
+                <constraint firstAttribute="trailing" secondItem="kY7-xI-TB4" secondAttribute="trailing" id="yJ6-d6-FJx"/>
+                <constraint firstItem="ej1-2c-KT5" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="yYn-zb-oMf"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <nil key="simulatedTopBarMetrics"/>

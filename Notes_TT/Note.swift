@@ -9,6 +9,7 @@
 import GLKit
 
 class Note : NSObject {
+    var id = 0
     var title = ""
     var text = ""
     var createDate = NSDate()
